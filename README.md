@@ -12,7 +12,7 @@ A single player puzzle game that you can play with you arrow keys. The objective
 4. Replay
 5. Keyboard Play
 6. Score
-7. Higest Score
+7. Highest Score
 8. Player
 9. Leader Board
 
