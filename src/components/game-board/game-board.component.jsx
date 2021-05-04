@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { v4 as uuid } from "uuid";
-import { useSwipeable } from "react-swipeable";
 
 import addNumber from "../../utils/addNumber";
 import swipeDown from "../../utils/handleDownKeyPress";
@@ -159,56 +157,11 @@ function GameBoard(props) {
     };
   });
 
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => handleKeyDown({ keyCode: 37 }, false),
-    onSwipedRight: () => handleKeyDown({ keyCode: 39 }, false),
-    onSwipedUp: () => handleKeyDown({ keyCode: 38 }, false),
-    onSwipedDown: () => handleKeyDown({ keyCode: 40 }, false),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
-
   return (
-    <div className="game_board_container" {...swipeHandlers}>
+    <div className="game_board_container">
       {winner ? <Winner setShouldCheckWinner={setShouldCheckWinner} /> : ""}
       {gameOver ? <GameOver /> : ""}
-      {data && !props.replay ? (
-        <div className="number_conatiner">
-          {data.map((row) => {
-            return (
-              <div className="number_row" key={uuid()}>
-                {row.map((digit) => {
-                  return (
-                    <div className={`single_block b${digit}`} key={uuid()}>
-                      {digit !== 0 ? digit : ""}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
-      ) : props.replay ? (
-        <>
-          <div className="number_conatiner">
-            {(props.nowReplayingData || data).map((row) => {
-              return (
-                <div className="number_row" key={uuid()}>
-                  {row.map((digit) => {
-                    return (
-                      <div className={`single_block b${digit}`} key={uuid()}>
-                        {digit !== 0 ? digit : ""}
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <NumberContainer />
-      )}
+      <NumberContainer data={data} props={props} />
     </div>
   );
 }
@@ -216,13 +169,13 @@ function GameBoard(props) {
 function mapStateToProps(state) {
   localStorage.setItem("state", JSON.stringify(state));
   return {
-    data: state.data,
-    replay: state.replay,
-    replayAllData: state.replayAllData,
-    nowReplayingData: state.nowReplayingData,
-    redo: state.redo,
-    winner: state.winner,
-    gameOver: state.gameOver,
+    data: state.gameInfo.data,
+    replay: state.gameInfo.replay,
+    replayAllData: state.gameInfo.replayAllData,
+    nowReplayingData: state.gameInfo.nowReplayingData,
+    redo: state.gameInfo.redo,
+    winner: state.gameInfo.winner,
+    gameOver: state.gameInfo.gameOver,
   };
 }
 export default connect(mapStateToProps)(GameBoard);

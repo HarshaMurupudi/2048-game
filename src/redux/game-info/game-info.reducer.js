@@ -1,24 +1,26 @@
-let initialState = JSON.parse(localStorage.getItem("state")) || {
-  data: [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-  ],
-  replayAllData: [],
-  nowReplayingData: [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-  ],
-  replay: false,
-  undo: [],
-  redo: [],
-  score: 0,
-  winner: false,
-  gameOver: false,
-};
+let initialState = JSON.parse(localStorage.getItem("state"))
+  ?
+  JSON.parse(localStorage.getItem("state")).gameInfo : {
+    data: [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ],
+    replayAllData: [],
+    nowReplayingData: [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ],
+    replay: false,
+    undo: [],
+    redo: [],
+    score: 0,
+    winner: false,
+    gameOver: false,
+  };
 
 export default function gameInfo(state = initialState, action) {
   switch (action.type) {
