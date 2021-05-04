@@ -14,7 +14,7 @@ function ReplaySection(props) {
       props.dispatch({ type: "REPLAY_STOP" });
     }
   };
-  const hanldeUndo = () => {
+  const handleUndo = () => {
     props.dispatch({ type: "UNDO" });
   };
   const handleRedo = () => {
@@ -24,7 +24,7 @@ function ReplaySection(props) {
     <section className="replay_container">
       {/* undo button */}
       {props.undo && props.undo.length ? (
-        <div onClick={hanldeUndo} className="undo_button">
+        <div onClick={handleUndo} className="undo_button">
           <div className="icon">
             <IoIosUndo />
           </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import addNumber from "../../utils/addNumber";
 
+import './game-over.styles.scss'
+
 const GameOver = (props) => {
   const hanldeGameReset = () => {
     props.dispatch({ type: "RESET_GAME" });

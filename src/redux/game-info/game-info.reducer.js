@@ -98,14 +98,19 @@ export default function gameInfo(state = initialState, action) {
         gameOver: false,
       };
     case "INCREASE_SCORE":
-      localStorage.setItem(
-        "highestScore",
-        JSON.stringify(state.score + action.payload)
-      );
+      const highestScore = JSON.parse(localStorage.getItem("highestScore"));
+      const newScore = state.score + action.payload;
+
+      if (newScore > highestScore) {
+        localStorage.setItem(
+          "highestScore",
+          JSON.stringify(newScore)
+        );
+      }
 
       return {
         ...state,
-        score: state.score + action.payload,
+        score: newScore,
       };
     case "GAME_OVER":
       return {
