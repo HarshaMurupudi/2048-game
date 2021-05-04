@@ -6,10 +6,7 @@ let initialState =
 export default function leaderBoard(state = initialState, action) {
   switch (action.type) {
     case "ADD_USER_NAME":
-      console.log(action.payload)
       const user = action.payload;
-
-      // if user is present do nothing
       const existingUser = state.scores.find((score) => score.name === user)
 
       if (!existingUser) {
@@ -21,12 +18,10 @@ export default function leaderBoard(state = initialState, action) {
           JSON.stringify({ name: user })
         )
 
-
         localStorage.setItem(
           "leaderBoard",
           JSON.stringify({ scores: currentScoresList })
         )
-
 
         return {
           ...state,
@@ -46,11 +41,10 @@ export default function leaderBoard(state = initialState, action) {
       const currentUserData = leaderBoard.find((score) => score.name === currentUser.name) || {};
       const { oldScore, currentScore } = action.payload
       const newScore = oldScore + currentScore;
-      console.log(newScore, currentUserData.score)
 
       if (newScore > currentUserData.score) {
         currentUserData.score = newScore;
-        console.log("saving to local")
+
         localStorage.setItem(
           "leaderBoard",
           JSON.stringify({ scores: leaderBoard })
@@ -60,7 +54,6 @@ export default function leaderBoard(state = initialState, action) {
           ...state,
           scores: leaderBoard
         }
-
       }
 
       return state;

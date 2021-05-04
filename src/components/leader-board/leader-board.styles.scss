@@ -31,7 +31,6 @@
       padding: 2em;
     }
   }
-
   .row {
     display: table-row;
     background: #ebdcd0;
@@ -44,14 +43,6 @@
       font-weight: 900;
       color: #ffffff;
       background: #776e65;
-    }
-
-    &.green {
-      background: #27ae60;
-    }
-
-    &.blue {
-      background: #2980b9;
     }
 
     @media screen and (max-width: 580px) {

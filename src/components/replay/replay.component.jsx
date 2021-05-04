@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { GrPlayFill } from "react-icons/gr";
-import { IoIosUndo, IoIosRedo, IoPlay } from "react-icons/io";
+import { IoIosUndo, IoIosRedo } from "react-icons/io";
 import { GiStopSign } from "react-icons/gi";
 import { MdPlayArrow } from "react-icons/md"
-import { IconContext } from "react-icons";
 
 import './replay.syles.scss'
 
 function ReplaySection(props) {
-  const iconStyle = { color: 'white' }
   const handleReplay = () => {
     if (!props.replay) {
       props.dispatch({ type: "REPLAY_START" });
@@ -25,7 +22,6 @@ function ReplaySection(props) {
   };
   return (
     <section className="replay_container">
-      {/* undo button */}
       {props.undo && props.undo.length ? (
         <div onClick={handleUndo} className="undo_button">
           <div className="icon">
@@ -41,7 +37,6 @@ function ReplaySection(props) {
           <div className="text">Undo</div>
         </div>
       )}
-      {/* replay button */}
       {props.replayDataLength <= 1 || props.replay ? (
         <div>
           {props.replay ? (
@@ -68,8 +63,6 @@ function ReplaySection(props) {
           <div className="text">Play</div>
         </div>
       )}
-      {/* redo button */}
-
       {props.redo && props.redo.length ? (
         <div onClick={handleRedo} className="redo_button">
           <div className="icon">
@@ -92,7 +85,6 @@ function ReplaySection(props) {
 function mapStateToProps(state) {
   localStorage.setItem("state", JSON.stringify(state));
 
-  console.log(state)
   return {
     replay: state.gameInfo.replay,
     undo: state.gameInfo.undo,

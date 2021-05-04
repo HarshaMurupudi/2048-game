@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import './score.styles.scss'
+
 function ScoreSection(props) {
   return (
     <>

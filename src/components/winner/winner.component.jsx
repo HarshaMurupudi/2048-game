@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import addNumber from "../../utils/addNumber";
 
+import './winner.styles.scss'
+
 const Winner = (props) => {
   const hanldeContinueGame = () => {
     props.dispatch({ type: "CONTINUE_GAME" });

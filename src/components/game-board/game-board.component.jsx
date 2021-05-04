@@ -42,14 +42,11 @@ function GameBoard(props) {
 
   const handleKeyDown = async (event, checkPreventDefault = true) => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    console.log(currentUser)
+
     if (!currentUser) {
       const enteredName = await prompt('Please enter your name');
-      console.log("inside", !!enteredName)
       props.dispatch({ type: "ADD_USER_NAME", payload: enteredName });
-      console.log(enteredName)
     }
-
 
     if (checkPreventDefault) {
       event.preventDefault();
@@ -68,7 +65,6 @@ function GameBoard(props) {
       case 38:
         let newData1 = swipeUp(data);
         handleUpdateScoreAndSetNewData(newData1);
-
         break;
       case 40:
         let newData2 = swipeDown(data);

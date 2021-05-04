@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from "uuid";
 
-import './/number-container.styles.scss'
+import './number-container.styles.scss'
 
 const NumberContainer = ({ data, props }) => {
   return (
