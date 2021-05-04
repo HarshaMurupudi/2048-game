@@ -1,5 +1,5 @@
 .home_parent_conatiner {
-  background-color: white;
+  background-color: #7a658f;
   color: #776e65;
   display: flex;
   flex-direction: column;
@@ -7,10 +7,13 @@
   justify-items: center;
   font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
   .home_contanier {
-    width: 400px;
-    // border: 1px solid green;
-    margin-top: 1rem;
-    // padding: 0.5rem;
+    width: 32%;
+    margin-top: 8rem;
+
+    .game_container {
+      background-color: white;
+      padding: 4em;
+    }
   }
   .game_header {
     display: flex;

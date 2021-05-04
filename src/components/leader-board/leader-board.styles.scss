@@ -1,9 +1,16 @@
 .leader_board_container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4em;
-
+  margin: 5em 0 5em 0;
+  h2 {
+    color: white;
+    text-decoration: underline;
+  }
+  .leader_board_content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4em;
+  }
   .player_container {
+    color: white;
     span {
       &:nth-child(1) {
         text-decoration: underline;
@@ -11,7 +18,6 @@
       }
     }
   }
-
   .table {
     margin: 0 0 40px 0;
     margin-left: 2em;
@@ -80,7 +86,7 @@
   }
 
   .cell {
-    padding: 6px 12px;
+    padding: 6px 0px;
     display: table-cell;
     @media screen and (max-width: 580px) {
       padding: 2px 16px;

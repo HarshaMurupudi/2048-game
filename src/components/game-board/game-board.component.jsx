@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
+import Winner from "../winner/winner.component";
+import GameOver from "../game-over/game-over.component";
+import NumberContainer from '../number-container/number-container.component'
+
 import addNumber from "../../utils/addNumber";
 import swipeDown from "../../utils/handleDownKeyPress";
 import swipeUp from "../../utils/handleUpKeyPress";
@@ -9,9 +13,6 @@ import swipeRight from "../../utils/handleRightKeyPress";
 import checkIfGameOver from "../../utils/checkGameOver";
 import calculateScore from "../../utils/calculateScore";
 import calculateWinner from "../../utils/calculateWinner";
-import Winner from "../winner/winner.component";
-import GameOver from "../game-over/game-over.component";
-import NumberContainer from '../number-container/number-container.component'
 
 import './game-board.styles.scss'
 
@@ -20,7 +21,6 @@ function GameBoard(props) {
   let [gameOver, setGameOver] = useState(props.gameOver);
   let [winner, setWinner] = useState(props.winner);
   let [shouldCheckWinner, setShouldCheckWinner] = useState(true);
-  // let [user, setUser] = useState({});
 
   const handleUpdateScoreAndSetNewData = (newDataToBeAdded) => {
     if (newDataToBeAdded) {
@@ -122,7 +122,6 @@ function GameBoard(props) {
     setData(props.data);
   }, [props.data]);
 
-  // for replaying
   useEffect(() => {
     if (props.replay) {
       var replayLength = props.replayAllData.length;
@@ -150,7 +149,6 @@ function GameBoard(props) {
     }
   }, [props.replay]);
 
-  // winner and gameover use effect
   useEffect(() => {
     if (winner !== props.winner) {
       setWinner(props.winner);
@@ -163,7 +161,6 @@ function GameBoard(props) {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
-    // this will clean up the event every time the component is re-rendered
     return function cleanup() {
       window.removeEventListener("keydown", handleKeyDown);
     };

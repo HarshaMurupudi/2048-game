@@ -28,15 +28,16 @@ const HomePage = (props) => {
   return (
     <section className="home_parent_conatiner">
       <div className="home_contanier">
-        <ScoreSection />
-        <div className="game_dispciption">
-          {" "}
+        <div className="game_container">
+          <ScoreSection />
+          <div className="game_dispciption">
+            {" "}
           Join the numbers and get to <b>2048 title!</b>{" "}
-          <button onClick={handleResetGame}>Reset</button>
+            <button onClick={handleResetGame}>Reset</button>
+          </div>
+          <GameBoard />
         </div>
-        <GameBoard />
         <ReplaySection />
-
         <LeaderBoard />
       </div>
     </section>

@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { GrPlayFill } from "react-icons/gr";
-import { IoIosUndo, IoIosRedo } from "react-icons/io";
+import { IoIosUndo, IoIosRedo, IoPlay } from "react-icons/io";
 import { GiStopSign } from "react-icons/gi";
+import { MdPlayArrow } from "react-icons/md"
+import { IconContext } from "react-icons";
 
 import './replay.syles.scss'
 
 function ReplaySection(props) {
+  const iconStyle = { color: 'white' }
   const handleReplay = () => {
     if (!props.replay) {
       props.dispatch({ type: "REPLAY_START" });
@@ -26,7 +29,7 @@ function ReplaySection(props) {
       {props.undo && props.undo.length ? (
         <div onClick={handleUndo} className="undo_button">
           <div className="icon">
-            <IoIosUndo />
+            <IoIosUndo color="white" />
           </div>
           <div className="text">Undo</div>
         </div>
@@ -51,7 +54,7 @@ function ReplaySection(props) {
           ) : (
             <>
               <div className="icon">
-                <GrPlayFill />
+                <MdPlayArrow />
               </div>
               <div className="text">Play</div>
             </>
@@ -60,7 +63,7 @@ function ReplaySection(props) {
       ) : (
         <div onClick={handleReplay} className="replay_button">
           <div className="icon">
-            <GrPlayFill />
+            <MdPlayArrow />
           </div>
           <div className="text">Play</div>
         </div>
