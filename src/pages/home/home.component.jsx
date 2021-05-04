@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import GameBoard from '../../components/game-board/game-board.component';
 import ScoreSection from '../../components/score/score.component';
 import ReplaySection from '../../components/replay/replay.component';
+import LeaderBoard from '../../components/leader-board/leader-board.component'
 
 import addNumber from '../../utils/addNumber'
 import { addnewNumber } from '../../redux/action'
@@ -35,6 +36,8 @@ const HomePage = (props) => {
         </div>
         <GameBoard />
         <ReplaySection />
+
+        <LeaderBoard />
       </div>
     </section>
   )

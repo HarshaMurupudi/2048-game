@@ -99,6 +99,9 @@ export default function gameInfo(state = initialState, action) {
       };
     case "INCREASE_SCORE":
       const highestScore = JSON.parse(localStorage.getItem("highestScore"));
+      // const leaderBoard = ((JSON.parse(localStorage.getItem("leaderBoard"))) || { scores: [] }).scores;
+      // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      // const currentUserData = leaderBoard.find((score) => score.name === currentUser.name) || {};
       const newScore = state.score + action.payload;
 
       if (newScore > highestScore) {
@@ -107,6 +110,18 @@ export default function gameInfo(state = initialState, action) {
           JSON.stringify(newScore)
         );
       }
+
+      // if (newScore > currentUserData.score) {
+      //   currentUserData.score = newScore;
+      //   console.log("saving to local")
+      //   localStorage.setItem(
+      //     "leaderBoard",
+      //     JSON.stringify({ scores: leaderBoard })
+      //   )
+
+      // }
+
+
 
       return {
         ...state,

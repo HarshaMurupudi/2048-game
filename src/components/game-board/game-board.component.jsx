@@ -20,11 +20,13 @@ function GameBoard(props) {
   let [gameOver, setGameOver] = useState(props.gameOver);
   let [winner, setWinner] = useState(props.winner);
   let [shouldCheckWinner, setShouldCheckWinner] = useState(true);
+  // let [user, setUser] = useState({});
 
   const handleUpdateScoreAndSetNewData = (newDataToBeAdded) => {
     if (newDataToBeAdded) {
       var newScoreToBeAdded = calculateScore(newDataToBeAdded, data);
       props.dispatch({ type: "INCREASE_SCORE", payload: newScoreToBeAdded });
+      props.dispatch({ type: "UPDATE_SCOREBOARD", payload: { oldScore: props.score, currentScore: newScoreToBeAdded } });
       setData(newDataToBeAdded);
       props.dispatch({ type: "UPDATE_BOARD_DATA", payload: newDataToBeAdded });
       if (calculateWinner(newDataToBeAdded) && shouldCheckWinner) {
@@ -38,7 +40,17 @@ function GameBoard(props) {
     }
   };
 
-  const handleKeyDown = (event, checkPreventDefault = true) => {
+  const handleKeyDown = async (event, checkPreventDefault = true) => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    console.log(currentUser)
+    if (!currentUser) {
+      const enteredName = await prompt('Please enter your name');
+      console.log("inside", !!enteredName)
+      props.dispatch({ type: "ADD_USER_NAME", payload: enteredName });
+      console.log(enteredName)
+    }
+
+
     if (checkPreventDefault) {
       event.preventDefault();
     }
@@ -176,6 +188,7 @@ function mapStateToProps(state) {
     redo: state.gameInfo.redo,
     winner: state.gameInfo.winner,
     gameOver: state.gameInfo.gameOver,
+    score: state.gameInfo.score
   };
 }
 export default connect(mapStateToProps)(GameBoard);
