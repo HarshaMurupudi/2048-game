@@ -30,7 +30,6 @@ const pressRight = (data) => {
         }
         slow--;
         fast = slow - 1;
-
       }
     }
   }
