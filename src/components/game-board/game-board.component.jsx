@@ -110,8 +110,22 @@ function GameBoard(props) {
     }
   };
 
+  const areTilesEmpty = () => {
+    let isEmpty = true;
+
+    props.data.forEach(row => {
+      const isAllZero = row.every(item => item === 0);
+
+      if (!isAllZero) {
+        isEmpty = false
+      }
+    });
+
+    return isEmpty
+  }
+
   useEffect(() => {
-    initializeAddNumber();
+    areTilesEmpty() && initializeAddNumber();
   }, []);
 
   useEffect(() => {
