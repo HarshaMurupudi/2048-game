@@ -57,9 +57,9 @@ const HomePage = (props) => {
           <div className="game_dispciption">
             {" "}
           Join the numbers and get to <b>2048 title!</b>{" "}
-            <button onClick={handleResetGame}>Reset</button>
           </div>
           <GameBoard />
+          <button onClick={handleResetGame}>Reset</button>
         </div>
         <ReplaySection />
         <LeaderBoard />

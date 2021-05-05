@@ -37,7 +37,11 @@
 
     .game_container {
       background-color: white;
-      padding: 4em;
+      padding: 4em 4em 2em 4em;
+
+      button {
+        margin-top: 2em;
+      }
     }
   }
   .game_dispciption {
@@ -57,7 +61,6 @@
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     .home_contanier {
       width: 300px;
-      // border: 1px solid green;
       margin-top: 1rem;
       padding: 0.5rem;
     }
