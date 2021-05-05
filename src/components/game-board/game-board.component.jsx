@@ -6,10 +6,10 @@ import GameOver from "../game-over/game-over.component";
 import NumberContainer from '../number-container/number-container.component'
 
 import addNumber from "../../utils/addNumber";
-import swipeDown from "../../utils/handleDownKeyPress";
-import swipeUp from "../../utils/handleUpKeyPress";
-import swipeLeft from "../../utils/handleLeftKeyPress";
-import swipeRight from "../../utils/handleRightKeyPress";
+import pressDown from "../../utils/handleDownKeyPress";
+import pressUp from "../../utils/handleUpKeyPress";
+import pressLeft from "../../utils/handleLeftKeyPress";
+import pressRight from "../../utils/handleRightKeyPress";
 import checkIfGameOver from "../../utils/checkGameOver";
 import calculateScore from "../../utils/calculateScore";
 import calculateWinner from "../../utils/calculateWinner";
@@ -63,19 +63,19 @@ function GameBoard(props) {
     }
     switch (event.keyCode) {
       case 38:
-        let newData1 = swipeUp(data);
+        let newData1 = pressUp(data);
         handleUpdateScoreAndSetNewData(newData1);
         break;
       case 40:
-        let newData2 = swipeDown(data);
+        let newData2 = pressDown(data);
         handleUpdateScoreAndSetNewData(newData2);
         break;
       case 37:
-        let newData3 = swipeLeft(data);
+        let newData3 = pressLeft(data);
         handleUpdateScoreAndSetNewData(newData3);
         break;
       case 39:
-        let newData4 = swipeRight(data);
+        let newData4 = pressRight(data);
         handleUpdateScoreAndSetNewData(newData4);
         break;
       default:

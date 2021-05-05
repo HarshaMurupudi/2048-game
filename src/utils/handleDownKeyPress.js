@@ -1,7 +1,7 @@
 import addNumber from "./addNumber";
 import checkIfGameOver from "./checkGameOver";
 
-const swipeDown = (data) => {
+const pressDown = (data) => {
   let b = data.map((arr) => arr.slice());
   let oldData = JSON.parse(JSON.stringify(data));
   for (let i = 3; i >= 0; i--) {
@@ -43,4 +43,4 @@ const swipeDown = (data) => {
   return b;
 };
 
-export default swipeDown;
+export default pressDown;

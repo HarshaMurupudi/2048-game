@@ -1,7 +1,7 @@
 import addNumber from "./addNumber";
 import checkIfGameOver from "./checkGameOver";
 
-const swipeRight = (data) => {
+const pressRight = (data) => {
   let oldData = data;
   let newArray = data.map((arr) => arr.slice());
 
@@ -45,4 +45,4 @@ const swipeRight = (data) => {
   return newArray;
 };
 
-export default swipeRight;
+export default pressRight;

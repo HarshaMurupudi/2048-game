@@ -2,7 +2,7 @@ import checkIfGameOver from "./checkGameOver";
 
 const { default: addNumber } = require("./addNumber");
 
-const swipeUp = (data) => {
+const pressUp = (data) => {
   let b = data.map((arr) => arr.slice());
   let oldData = JSON.parse(JSON.stringify(data));
   for (let i = 0; i < 4; i++) {
@@ -44,4 +44,4 @@ const swipeUp = (data) => {
   return b;
 };
 
-export default swipeUp;
+export default pressUp;

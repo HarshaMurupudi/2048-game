@@ -1,9 +1,7 @@
 import addNumber from "./addNumber";
 import checkIfGameOver from "./checkGameOver";
 
-export default swipeLeft;
-
-function swipeLeft(data) {
+function pressLeft(data) {
   let oldGrid = data;
   let newArray = data.map((arr) => arr.slice());
 
@@ -51,3 +49,5 @@ function swipeLeft(data) {
     return newArray;
   }
 }
+
+export default pressLeft;
