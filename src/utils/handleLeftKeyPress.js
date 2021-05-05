@@ -6,7 +6,7 @@ function pressLeft(data) {
   let newArray = data.map((arr) => arr.slice());
 
   for (let i = 0; i < 4; i++) {
-    let b = newArray[i];
+    let tiles = newArray[i];
     let slow = 0;
     let fast = 1;
     while (slow < 4) {
@@ -14,27 +14,24 @@ function pressLeft(data) {
         case fast === 4:
           fast = slow + 1;
           slow++;
-        case b[slow] === 0 && b[fast] === 0:
+        case tiles[slow] === 0 && tiles[fast] === 0:
           fast++;
           break;
-        case b[slow] === 0 && b[fast] !== 0:
-          b[slow] = b[fast];
-          b[fast] = 0;
+        case tiles[slow] === 0 && tiles[fast] !== 0:
+          tiles[slow] = tiles[fast];
+          tiles[fast] = 0;
           fast++;
           break;
-        case b[slow] !== 0 && b[fast] === 0:
+        case tiles[slow] !== 0 && tiles[fast] === 0:
           fast++;
           break;
-        case b[slow] !== 0 && b[fast] !== 0:
-          if (b[slow] === b[fast]) {
-            b[slow] = b[slow] + b[fast];
-            b[fast] = 0;
-            fast = slow + 1;
-            slow++;
-          } else {
-            slow++;
-            fast = slow + 1;
+        case tiles[slow] !== 0 && tiles[fast] !== 0:
+          if (tiles[slow] === tiles[fast]) {
+            tiles[slow] = tiles[slow] + tiles[fast];
+            tiles[fast] = 0;
           }
+          slow++;
+          fast = slow + 1;
           break;
         default:
           break;

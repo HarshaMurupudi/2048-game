@@ -6,8 +6,8 @@ const pressRight = (data) => {
   let newArray = data.map((arr) => arr.slice());
 
   for (let i = 3; i >= 0; i--) {
-    let b = newArray[i];
-    let slow = b.length - 1;
+    let tiles = newArray[i];
+    let slow = tiles.length - 1;
     let fast = slow - 1;
     while (slow > 0) {
       if (fast === -1) {
@@ -15,24 +15,22 @@ const pressRight = (data) => {
         slow--;
         continue;
       }
-      if (b[slow] === 0 && b[fast] === 0) {
+      if (tiles[slow] === 0 && tiles[fast] === 0) {
         fast--;
-      } else if (b[slow] === 0 && b[fast] !== 0) {
-        b[slow] = b[fast];
-        b[fast] = 0;
+      } else if (tiles[slow] === 0 && tiles[fast] !== 0) {
+        tiles[slow] = tiles[fast];
+        tiles[fast] = 0;
         fast--;
-      } else if (b[slow] !== 0 && b[fast] === 0) {
+      } else if (tiles[slow] !== 0 && tiles[fast] === 0) {
         fast--;
-      } else if (b[slow] !== 0 && b[fast] !== 0) {
-        if (b[slow] === b[fast]) {
-          b[slow] = b[slow] + b[fast];
-          b[fast] = 0;
-          fast = slow - 1;
-          slow--;
-        } else {
-          slow--;
-          fast = slow - 1;
+      } else if (tiles[slow] !== 0 && tiles[fast] !== 0) {
+        if (tiles[slow] === tiles[fast]) {
+          tiles[slow] = tiles[slow] + tiles[fast];
+          tiles[fast] = 0;
         }
+        slow--;
+        fast = slow - 1;
+
       }
     }
   }
