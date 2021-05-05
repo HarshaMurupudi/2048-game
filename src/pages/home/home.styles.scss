@@ -6,6 +6,31 @@
   align-items: center;
   justify-items: center;
   font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  .initial_message {
+    color: white;
+    font-size: 1.5em;
+
+    .right_down_left_arrows_container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .blink {
+      animation: blink-animation 1s steps(5, start) infinite;
+      -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+    @keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+  }
+
   .home_contanier {
     min-width: 400px;
     margin-top: 8rem;
