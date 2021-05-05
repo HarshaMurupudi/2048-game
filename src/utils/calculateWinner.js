@@ -1,5 +1,5 @@
-const calculateWinner = (data) => {
-  return data
+const calculateWinner = (tiles) => {
+  return tiles
     .map((row) => row.slice())
     .flat()
     .includes(2048);

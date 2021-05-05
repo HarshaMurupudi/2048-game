@@ -83,7 +83,7 @@ function ReplaySection(props) {
 }
 
 function mapStateToProps(state) {
-  localStorage.setItem("state", JSON.stringify(state));
+  localStorage.setItem("state", JSON.stringify(state)); //#TODO: Store only game into state
 
   return {
     replay: state.gameInfo.replay,

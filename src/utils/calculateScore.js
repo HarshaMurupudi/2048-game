@@ -1,21 +1,21 @@
 const calculateScore = (newData, oldData) => {
-  var oldData1 = oldData
+  var flatenedOldData = oldData
     .map((row) => row.slice())
     .flat()
     .filter((data) => data !== 2);
 
-  var newData1 = newData
+  var flatenedNewData = newData
     .map((row) => row.slice())
     .flat()
     .filter((data) => data !== 2);
 
-  oldData1.forEach((element) => {
-    if (newData1.includes(element) && element !== 0) {
-      newData1.splice(newData1.indexOf(element), 1, 0);
+  flatenedOldData.forEach((item) => {
+    if (flatenedNewData.includes(item) && item !== 0) {
+      flatenedNewData.splice(flatenedNewData.indexOf(item), 1, 0);
     }
   });
-  return newData1.reduce((acc, ele) => {
-    acc += ele;
+  return flatenedNewData.reduce((acc, entry) => {
+    acc += entry;
     return acc;
   }, 0);
 };

@@ -17,7 +17,7 @@ import calculateWinner from "../../utils/calculateWinner";
 import './game-board.styles.scss'
 
 function GameBoard(props) {
-  let [data, setData] = useState(props.data);
+  let [data, setData] = useState(props.data); // To maintain current state (old data) for comparition
   let [gameOver, setGameOver] = useState(props.gameOver);
   let [winner, setWinner] = useState(props.winner);
   let [shouldCheckWinner, setShouldCheckWinner] = useState(true);
@@ -186,7 +186,8 @@ function GameBoard(props) {
 }
 
 function mapStateToProps(state) {
-  localStorage.setItem("state", JSON.stringify(state));
+  localStorage.setItem("state", JSON.stringify(state));  //#TODO: Store only game into state
+
   return {
     data: state.gameInfo.data,
     replay: state.gameInfo.replay,
