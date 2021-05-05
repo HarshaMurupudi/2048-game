@@ -56,7 +56,7 @@ const HomePage = (props) => {
           <ScoreSection />
           <div className="game_dispciption">
             {" "}
-          Join the numbers and get to <b>2048 title!</b>{" "}
+          Join the numbers and get to <b>2048 tile!</b>{" "}
           </div>
           <GameBoard />
           <button onClick={handleResetGame}>Reset</button>
