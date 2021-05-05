@@ -49,24 +49,22 @@ const HomePage = (props) => {
   }
 
   return (
-    <div>
-      <section className="home_parent_conatiner">
-        {renderIntitalMessage()}
-        <div className="home_contanier">
-          <div className="game_container">
-            <ScoreSection />
-            <div className="game_dispciption">
-              {" "}
+    <section className="home_parent_conatiner">
+      {renderIntitalMessage()}
+      <div className="home_contanier">
+        <div className="game_container">
+          <ScoreSection />
+          <div className="game_dispciption">
+            {" "}
           Join the numbers and get to <b>2048 title!</b>{" "}
-              <button onClick={handleResetGame}>Reset</button>
-            </div>
-            <GameBoard />
+            <button onClick={handleResetGame}>Reset</button>
           </div>
-          <ReplaySection />
-          <LeaderBoard />
+          <GameBoard />
         </div>
-      </section>
-    </div>
+        <ReplaySection />
+        <LeaderBoard />
+      </div>
+    </section>
   )
 }
 
