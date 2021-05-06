@@ -54,7 +54,7 @@ const HomePage = (props) => {
       <div className="home_contanier">
         <div className="game_container">
           <ScoreSection />
-          <div className="game_dispciption">
+          <div className="game_description">
             {" "}
           Join the numbers and get to <b>2048 tile!</b>{" "}
           </div>

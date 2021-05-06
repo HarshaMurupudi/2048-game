@@ -32,7 +32,7 @@ function ReplaySection(props) {
       ) : (
         <div>
           <div className="icon">
-            <IoIosUndo />
+            <IoIosUndo color="black" />
           </div>
           <div className="text">Undo</div>
         </div>
@@ -73,7 +73,7 @@ function ReplaySection(props) {
       ) : (
         <div>
           <div className="icon">
-            <IoIosRedo />
+            <IoIosRedo color="black" />
           </div>
           <div className="text">Redo</div>
         </div>
