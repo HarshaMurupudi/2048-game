@@ -139,7 +139,7 @@ function GameBoard(props) {
         setTimeout(
           function () {
             props.dispatch({
-              type: "REPLAY_START",
+              type: "REPLAY_CONTINUE",
               payload: initialGameHistory,
             });
             if (replayLength === index + 1) {
