@@ -49,7 +49,7 @@ function ReplaySection(props) {
           ) : (
             <>
               <div className="icon">
-                <MdPlayArrow />
+                <MdPlayArrow color="black" />
               </div>
               <div className="text">Play</div>
             </>
