@@ -10,41 +10,36 @@ function pressLeft(data) {
     let slow = 0;
     let fast = 1;
     while (slow < 4) {
-      switch (true) {
-        case fast === 4:
-          fast = slow + 1;
-          slow++;
-        case tiles[slow] === 0 && tiles[fast] === 0:
-          fast++;
-          break;
-        case tiles[slow] === 0 && tiles[fast] !== 0:
-          tiles[slow] = tiles[fast];
+      if (fast === 4) {
+        fast = slow + 1;
+        slow++;
+        continue;
+      }
+      if (tiles[slow] === 0 && tiles[fast] === 0) {
+        fast++;
+      } else if (tiles[slow] === 0 && tiles[fast] !== 0) {
+        tiles[slow] = tiles[fast];
+        tiles[fast] = 0;
+        fast++;
+      } else if (tiles[slow] !== 0 && tiles[fast] === 0) {
+        fast++;
+      } else if (tiles[slow] !== 0 && tiles[fast] !== 0) {
+        if (tiles[slow] === tiles[fast]) {
+          tiles[slow] = tiles[slow] + tiles[fast];
           tiles[fast] = 0;
-          fast++;
-          break;
-        case tiles[slow] !== 0 && tiles[fast] === 0:
-          fast++;
-          break;
-        case tiles[slow] !== 0 && tiles[fast] !== 0:
-          if (tiles[slow] === tiles[fast]) {
-            tiles[slow] = tiles[slow] + tiles[fast];
-            tiles[fast] = 0;
-          }
-          slow++;
-          fast = slow + 1;
-          break;
-        default:
-          break;
+        }
+        slow++;
+        fast = slow + 1;
       }
     }
-    if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
-      addNumber(newArray);
-      if (checkIfGameOver(newArray)) {
-        return false;
-      }
-    }
-    return newArray;
   }
+  if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
+    addNumber(newArray);
+    if (checkIfGameOver(newArray)) {
+      return false;
+    }
+  }
+  return newArray;
 }
 
 export default pressLeft;
