@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from "react-redux";
 
-import GameBoard from '../../components/game-board/game-board.component';
 import ScoreSection from '../../components/score/score.component';
+import GameBoard from '../../components/game-board/game-board.component';
 import ReplaySection from '../../components/replay/replay.component';
 import LeaderBoard from '../../components/leader-board/leader-board.component'
 

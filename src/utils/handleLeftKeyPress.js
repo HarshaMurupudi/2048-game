@@ -1,5 +1,5 @@
 import addNumber from "./addNumber";
-import checkIfGameOver from "./checkGameOver";
+// import checkIfGameOver from "./checkGameOver";
 
 function pressLeft(data) {
   let oldGrid = data;
@@ -35,9 +35,6 @@ function pressLeft(data) {
   }
   if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
     addNumber(newArray);
-    if (checkIfGameOver(newArray)) {
-      return false;
-    }
   }
   return newArray;
 }

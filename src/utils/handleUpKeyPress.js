@@ -1,6 +1,5 @@
-import checkIfGameOver from "./checkGameOver";
-
-const { default: addNumber } = require("./addNumber");
+// import checkIfGameOver from "./checkGameOver";
+import addNumber from "./addNumber";
 
 const pressUp = (data) => {
   let tiles = data.map((arr) => arr.slice());
@@ -34,9 +33,6 @@ const pressUp = (data) => {
   }
   if (JSON.stringify(oldData) !== JSON.stringify(tiles)) {
     addNumber(tiles);
-    if (checkIfGameOver(tiles)) {
-      return false;
-    }
   }
   return tiles;
 };

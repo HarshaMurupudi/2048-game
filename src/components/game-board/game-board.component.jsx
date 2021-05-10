@@ -124,14 +124,17 @@ function GameBoard(props) {
     return isEmpty
   }
 
+  // Adds two new two 2 value tiles when game starts for the first time 
   useEffect(() => {
     areTilesEmpty() && initializeAddNumber();
   }, []);
 
+  // updates the current board state when ever it changes
   useEffect(() => {
     setData(props.data);
   }, [props.data]);
 
+  // starts replay when ever replay is clicked
   useEffect(() => {
     if (props.replay) {
       var replayLength = props.replayAllData.length;
@@ -159,6 +162,7 @@ function GameBoard(props) {
     }
   }, [props.replay]);
 
+  // 
   useEffect(() => {
     if (winner !== props.winner) {
       setWinner(props.winner);
@@ -166,7 +170,7 @@ function GameBoard(props) {
     if (gameOver !== props.gameOver) {
       setGameOver(props.gameOver);
     }
-  }, [props]);
+  }, [props.winner, props.gameOver]); //#TODO: Store only game into state
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);

@@ -1,5 +1,5 @@
 import addNumber from "./addNumber";
-import checkIfGameOver from "./checkGameOver";
+// import checkIfGameOver from "./checkGameOver";
 
 const pressRight = (data) => {
   let oldData = data;
@@ -35,9 +35,9 @@ const pressRight = (data) => {
   }
   if (JSON.stringify(newArray) !== JSON.stringify(oldData)) {
     addNumber(newArray);
-    if (checkIfGameOver(newArray)) {
-      return false;
-    }
+    // if (checkIfGameOver(newArray)) {
+    //   return false;
+    // }
   }
   return newArray;
 };

@@ -1,5 +1,5 @@
 import addNumber from "./addNumber";
-import checkIfGameOver from "./checkGameOver";
+// import checkIfGameOver from "./checkGameOver";
 
 const pressDown = (data) => {
   let tiles = data.map((arr) => arr.slice());
@@ -33,9 +33,6 @@ const pressDown = (data) => {
   }
   if (JSON.stringify(tiles) !== JSON.stringify(oldData)) {
     addNumber(tiles);
-    if (checkIfGameOver(tiles)) {
-      return false;
-    }
   }
   return tiles;
 };

@@ -120,7 +120,7 @@ export default function gameInfo(state = initialState, action) {
     case "GAME_OVER":
       return {
         ...state,
-        gameOver: !state.gameOver,
+        gameOver: true,
       };
     case "WINNER":
       return {
