@@ -17,26 +17,21 @@ import calculateWinner from "../../utils/calculateWinner";
 import './game-board.styles.scss'
 
 function GameBoard(props) {
-  let [data, setData] = useState(props.data); // To maintain current state (old data) for comparition
+  let [data, setData] = useState(props.data); // To maintain current state (current data)
   let [gameOver, setGameOver] = useState(props.gameOver);
   let [winner, setWinner] = useState(props.winner);
-  let [shouldCheckWinner, setShouldCheckWinner] = useState(true);
+  let [shouldCheckWinner, setShouldCheckWinner] = useState(true); //safety check after winning condition #TODO: Remove in next refactor
 
   const handleUpdateScoreAndSetNewData = (newDataToBeAdded) => {
-    if (newDataToBeAdded) {
-      var newScoreToBeAdded = calculateScore(newDataToBeAdded, data);
-      props.dispatch({ type: "INCREASE_SCORE", payload: newScoreToBeAdded });
-      props.dispatch({ type: "UPDATE_SCOREBOARD", payload: { oldScore: props.score, currentScore: newScoreToBeAdded } });
-      setData(newDataToBeAdded);
-      props.dispatch({ type: "UPDATE_BOARD_DATA", payload: newDataToBeAdded });
-      if (calculateWinner(newDataToBeAdded) && shouldCheckWinner) {
-        setWinner(true);
-        props.dispatch({ type: "WINNER" });
-        setShouldCheckWinner(false);
-      }
-    } else {
-      setGameOver(true);
-      props.dispatch({ type: "GAME_OVER" });
+    let newScoreToBeAdded = calculateScore(newDataToBeAdded, data);
+    props.dispatch({ type: "INCREASE_SCORE", payload: newScoreToBeAdded });
+    props.dispatch({ type: "UPDATE_SCOREBOARD", payload: { oldScore: props.score, currentScore: newScoreToBeAdded } });
+    setData(newDataToBeAdded);
+    props.dispatch({ type: "UPDATE_BOARD_DATA", payload: newDataToBeAdded });
+    if (calculateWinner(newDataToBeAdded) && shouldCheckWinner) {
+      setWinner(true);
+      props.dispatch({ type: "WINNER" });
+      setShouldCheckWinner(false);
     }
   };
 
@@ -47,10 +42,10 @@ function GameBoard(props) {
       const enteredName = await prompt('Please enter your name');
       props.dispatch({ type: "ADD_USER_NAME", payload: enteredName });
     }
-
     if (checkPreventDefault) {
       event.preventDefault();
     }
+    // handle key clicks while replay
     if (props.replay) {
       return;
     }
@@ -58,9 +53,7 @@ function GameBoard(props) {
       setGameOver(true);
       props.dispatch({ type: "GAME_OVER" });
     }
-    if (props.redo.length) {
-      props.dispatch({ type: "TAKE_GAME_ONE_STEP_BACK" });
-    }
+
     switch (event.keyCode) {
       case 38:
         let newData1 = pressUp(data);
@@ -80,10 +73,6 @@ function GameBoard(props) {
         break;
       default:
         break;
-    }
-    if (checkIfGameOver(data)) {
-      setGameOver(true);
-      props.dispatch({ type: "GAME_OVER" });
     }
   };
 

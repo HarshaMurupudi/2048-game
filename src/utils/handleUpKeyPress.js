@@ -1,9 +1,9 @@
-// import checkIfGameOver from "./checkGameOver";
 import addNumber from "./addNumber";
 
 const pressUp = (data) => {
   let tiles = data.map((arr) => arr.slice());
-  let oldData = JSON.parse(JSON.stringify(data));
+  let oldData = JSON.stringify(data);
+
   for (let i = 0; i < 4; i++) {
     let slow = 0;
     let fast = 1;
@@ -31,9 +31,11 @@ const pressUp = (data) => {
       }
     }
   }
-  if (JSON.stringify(oldData) !== JSON.stringify(tiles)) {
+
+  if (oldData !== JSON.stringify(tiles)) {
     addNumber(tiles);
   }
+
   return tiles;
 };
 

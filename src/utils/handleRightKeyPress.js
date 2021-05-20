@@ -1,8 +1,7 @@
 import addNumber from "./addNumber";
-// import checkIfGameOver from "./checkGameOver";
 
 const pressRight = (data) => {
-  let oldData = data;
+  let oldData = JSON.stringify(data);
   let newArray = data.map((arr) => arr.slice());
 
   for (let i = 3; i >= 0; i--) {
@@ -10,6 +9,7 @@ const pressRight = (data) => {
     let slow = tiles.length - 1;
     let fast = slow - 1;
     while (slow > 0) {
+      // row end reached
       if (fast === -1) {
         fast = slow - 1;
         slow--;
@@ -33,12 +33,11 @@ const pressRight = (data) => {
       }
     }
   }
-  if (JSON.stringify(newArray) !== JSON.stringify(oldData)) {
+
+  if (JSON.stringify(newArray) !== oldData) {
     addNumber(newArray);
-    // if (checkIfGameOver(newArray)) {
-    //   return false;
-    // }
   }
+
   return newArray;
 };
 

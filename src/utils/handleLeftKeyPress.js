@@ -1,8 +1,7 @@
 import addNumber from "./addNumber";
-// import checkIfGameOver from "./checkGameOver";
 
 function pressLeft(data) {
-  let oldGrid = data;
+  let oldGrid = JSON.stringify(data);
   let newArray = data.map((arr) => arr.slice());
 
   for (let i = 0; i < 4; i++) {
@@ -10,6 +9,7 @@ function pressLeft(data) {
     let slow = 0;
     let fast = 1;
     while (slow < 4) {
+      // row end reached
       if (fast === 4) {
         fast = slow + 1;
         slow++;
@@ -33,9 +33,11 @@ function pressLeft(data) {
       }
     }
   }
-  if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
+
+  if (oldGrid !== JSON.stringify(newArray)) {
     addNumber(newArray);
   }
+
   return newArray;
 }
 
