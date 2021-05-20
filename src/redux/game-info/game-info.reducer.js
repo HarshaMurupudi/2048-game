@@ -73,12 +73,6 @@ export default function gameInfo(state = initialState, action) {
         data: state.redo,
         redo: [],
       };
-    case "TAKE_GAME_ONE_STEP_BACK":
-      return {
-        ...state,
-        replayAllData: state.replayAllData.slice(0, -1),
-        redo: [],
-      };
     case "RESET_GAME":
       localStorage.removeItem("state");
       return {
@@ -125,7 +119,7 @@ export default function gameInfo(state = initialState, action) {
     case "WINNER":
       return {
         ...state,
-        winner: !state.winner,
+        winner: !state.winner, //#TODO: toggle not required
       };
     case "CONTINUE_GAME":
       return {
