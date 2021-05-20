@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Winner from "../winner/winner.component";
 import GameOver from "../game-over/game-over.component";
-import NumberContainer from '../number-container/number-container.component'
+import TilesContainer from '../tiles-container/tiles-container.component'
 
 import addNumber from "../../utils/addNumber";
 import pressDown from "../../utils/handleDownKeyPress";
@@ -162,7 +162,7 @@ function GameBoard(props) {
     }
   }, [props.replay]);
 
-  // 
+  // Checks and acts on changes in winner and gameover props
   useEffect(() => {
     if (winner !== props.winner) {
       setWinner(props.winner);
@@ -170,7 +170,7 @@ function GameBoard(props) {
     if (gameOver !== props.gameOver) {
       setGameOver(props.gameOver);
     }
-  }, [props.winner, props.gameOver]); //#TODO: Store only game into state
+  }, [props.winner, props.gameOver]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -184,7 +184,7 @@ function GameBoard(props) {
     <div className="game_board_container">
       {winner ? <Winner setShouldCheckWinner={setShouldCheckWinner} /> : ""}
       {gameOver ? <GameOver /> : ""}
-      <NumberContainer data={data} props={props} />
+      <TilesContainer data={data} props={props} />
     </div>
   );
 }

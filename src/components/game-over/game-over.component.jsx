@@ -5,7 +5,7 @@ import addNumber from "../../utils/addNumber";
 import './game-over.styles.scss'
 
 const GameOver = (props) => {
-  const hanldeGameReset = () => {
+  const handleGameReset = () => {
     props.dispatch({ type: "RESET_GAME" });
     var newData = addNumber([
       [0, 0, 0, 0],
@@ -21,7 +21,7 @@ const GameOver = (props) => {
     <>
       <section className="game_over_container">
         <h3 className="game_over_title">Game Over!!!</h3>
-        <div className="btn_game_over_reset" onClick={hanldeGameReset}>
+        <div className="btn_game_over_reset" onClick={handleGameReset}>
           Retry
         </div>
       </section>

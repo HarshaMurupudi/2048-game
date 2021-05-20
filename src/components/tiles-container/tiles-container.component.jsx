@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import TileRow from '../tile-row/tile-row.component'
 
-import './number-container.styles.scss'
+import './tiles-container.styles.scss'
 
 const NumberContainer = ({ data, props }) => {
   return (
